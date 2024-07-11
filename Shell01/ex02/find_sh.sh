@@ -1,1 +1,1 @@
-ls -R | grep '\.sh$' | cut -f1 -d "."
+ls -R | grep '\.sh$' | cut -f1 -d "." | sort
