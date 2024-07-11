@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
 void	ft_swap(int *a, int *b)
 {
 	int	temp;
@@ -21,40 +19,24 @@ void	ft_swap(int *a, int *b)
 	*b = temp;
 }
 
-void ft_sort_int_tab(int *tab, int size)
+void	ft_sort_int_tab(int *tab, int size)
 {
-	int i;
-	int j;
-	int min_i;
+	int	i;
+	int	j;
+	int	min_i;
 
+	i = 0;
 	while (i < size - 1)
 	{
 		min_i = i;
+		j = i + 1;
 		while (j < size)
 		{
-			if (j < min_i)
-				ft_swap(&tab[min_i], &tab[j]);
+			if (tab[j] < tab[min_i])
+				min_i = j;
 			j++;
 		}
-		i++;
-	}
-}
-
-int main()
-{
-	int a[5];
-	a[0] = 5;
-	a[1] = 2;
-	a[2] = 4;
-	a[3] = 1;
-	a[4] = 3;
-
-
-	int i = 0;
-	ft_sort_int_tab(a, 5);
-	while(a[i])
-	{
-		printf("%d", a[i]);
+		ft_swap(&tab[min_i], &tab[i]);
 		i++;
 	}
 }
