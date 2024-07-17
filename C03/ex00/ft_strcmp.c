@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgodet <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 20:10:48 by rgodet            #+#    #+#             */
-/*   Updated: 2024/07/14 23:19:13 by rgodet           ###   ########.fr       */
+/*   Created: 2024/07/15 15:25:46 by rgodet            #+#    #+#             */
+/*   Updated: 2024/07/16 08:11:02 by rgodet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strupcase(char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
+	int	res;
 
 	i = 0;
-	while (str[i])
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] -= 32;
 		i++;
 	}
-	return (str);
+	res = s1[i] - s2[i];
+	if (res > 0)
+		return (1);
+	if (res < 0)
+		return (-1);
+	return (0);
 }

@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strupcase.c                                     :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgodet <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 20:10:48 by rgodet            #+#    #+#             */
-/*   Updated: 2024/07/14 23:19:13 by rgodet           ###   ########.fr       */
+/*   Created: 2024/07/16 09:10:59 by rgodet            #+#    #+#             */
+/*   Updated: 2024/07/16 09:17:45 by rgodet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strupcase(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] -= 32;
 		i++;
 	}
-	return (str);
+	return (i);
+}
+
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
+{
+	unsigned int	i;
+	unsigned int	j;
+
+	i = ft_strlen(dest);
+	if (i > 0) {
+		j = 0;
+		while (src[j] != '\0' && j < nb)
+		{
+			dest[j + i] = src[j];
+			j++;
+		}
+		dest[j + i] = 0;
+	}
+	return (dest);
 }

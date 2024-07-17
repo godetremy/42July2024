@@ -1,50 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgodet <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 23:21:48 by rgodet            #+#    #+#             */
-/*   Updated: 2024/07/14 23:54:40 by rgodet           ###   ########.fr       */
+/*   Created: 2024/07/15 10:30:44 by rgodet            #+#    #+#             */
+/*   Updated: 2024/07/15 13:55:08 by rgodet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_strupcase(char *chr)
+#include <unistd.h>
+
+void	print_hex(int nb)
 {
-	if (*chr >= 'a' && *chr <= 'z')
-		*chr -= 32;
+	char	hex[2];
+	int		i;
+	int		j;
+	int		val;
+
+	i = 0;
+	while (nb != 0)
+	{
+		val = nb % 16;
+		if (val < 10)
+			val += 48;
+		else
+			val += 87;
+		hex[i++] = val;
+		nb = nb / 16;
+	}
+	j = 0;
+	if (i < 2)
+		write(1, "0", 1);
+	while (hex[j])
+	{
+		write(1, &hex[j], 1);
+		j++;
+	}
 }
 
-void	ft_strlowcase(char *chr)
-{
-	if (*chr >= 'A' && *chr <= 'Z')
-		*chr += 32;
-}
-
-char	*ft_strcapitalize(char *str)
+void	ft_putstr_non_printable(char *str)
 {
 	int	i;
-	int	next_upt;
 
-	next_upt = 1;
 	i = 0;
 	while (str[i])
 	{
-		if (next_upt == 1)
+		if (str[i] < 32 || str[i] > 126)
 		{
-			ft_strupcase(&str[i]);
-			next_upt = 0;
+			write(1, "\\", 1);
+			print_hex(str[i]);
 		}
 		else
 		{
-			ft_strlowcase(&str[i]);
+			write(1, &str[i], 1);
 		}
-		if (str[i] < 48 || (str[i] >= 58 && str[i] <= 64))
-			next_upt = 1;
-		if ((str[i] >= 91 && str[i] <= 96) || str[i] > 122)
-			next_upt = 1;
 		i++;
 	}
-	return (str);
 }

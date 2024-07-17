@@ -19,7 +19,6 @@ int	ft_str_is_alpha(char *str)
 	i = 0;
 	while (str[i])
 	{
-		printf("%d\n", str[i]);
 		if (!(str[i] >= 'A' && str[i] <= 'z'))
 			is_alpha = 0;
 		if (str[i] >= 91 && str[i] <= 96)
