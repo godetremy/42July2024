@@ -28,7 +28,8 @@ char	*ft_strcat(char *dest, char *src)
 	int	j;
 
 	i = ft_strlen(dest);
-	if (i > 0) {
+	if (i > 0)
+	{
 		j = 0;
 		while (src[j] != '\0')
 		{

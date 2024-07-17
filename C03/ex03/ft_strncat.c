@@ -28,7 +28,8 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 	unsigned int	j;
 
 	i = ft_strlen(dest);
-	if (i > 0) {
+	if (i > 0)
+	{
 		j = 0;
 		while (src[j] != '\0' && j < nb)
 		{
