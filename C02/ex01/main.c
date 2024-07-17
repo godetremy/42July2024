@@ -4,11 +4,13 @@
 
 int main(int argc, char *argv[])
 {
-	char dest[100] = "aaaaaaaa";
-	char destVerif[100] = "aaaaaaaa";
+	char src[100] = "abcdefghijklmnop";
+	char srcVerif[100] = "abcdefghijklmnop";
+	char dest[100] = "coucou";
+	char destVerif[100] = "coucou";
 	
-	ft_strncpy(dest, argv[1], 5);
-	strncpy(destVerif, argv[1], 5);
+	ft_strncpy(dest, src, 2);
+	strncpy(destVerif, srcVerif, 2);
 	
 	printf("Original  : %s\n", destVerif);
 	printf("Your func : %s\n", dest);

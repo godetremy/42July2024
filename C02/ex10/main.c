@@ -4,13 +4,13 @@
 
 int main(int argc, char *argv[])
 {
-	char src[100] = "hellooooo";
-	char srcVerif[100] = "hellooooo";
+	char src[100] = "artetete";
+	char srcVerif[100] = "artetete";
 	char dest[100] = "";
 	char destVerif[100] = "";
 	
-	int o = strlcpy(destVerif, srcVerif, 5);
-	int r = ft_strlcpy(dest, src, 5);
+	int o = strlcpy(destVerif, srcVerif, 1);
+	int r = ft_strlcpy(dest, src, 1);
 	
 	printf("Original  : %s\n", destVerif);
 	printf("Original  : %d\n", o);
