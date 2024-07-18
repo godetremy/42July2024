@@ -28,15 +28,12 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 	unsigned int	j;
 
 	i = ft_strlen(dest);
-	if (i > 0)
+	j = 0;
+	while (src[j] != '\0' && j < nb)
 	{
-		j = 0;
-		while (src[j] != '\0' && j < nb)
-		{
-			dest[j + i] = src[j];
-			j++;
-		}
-		dest[j + i] = 0;
+		dest[j + i] = src[j];
+		j++;
 	}
+	dest[j + i] = 0;
 	return (dest);
 }

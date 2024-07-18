@@ -12,11 +12,11 @@
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	i;
-	int	res;
+	unsigned int	i;
+	unsigned int	res;
 
 	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
 	{
 		i++;
 	}

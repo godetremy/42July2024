@@ -19,6 +19,8 @@ char	*ft_strstr(char *str, char *to_find)
 	find_size = 0;
 	while (to_find[find_size])
 		find_size++;
+	if (find_size == 0)
+		return (&str[0]);
 	i = 0;
 	while (str[i])
 	{
@@ -34,5 +36,5 @@ char	*ft_strstr(char *str, char *to_find)
 		}
 		i++;
 	}
-	return ((void *)0);
+	return (0);
 }

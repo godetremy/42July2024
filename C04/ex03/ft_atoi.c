@@ -10,12 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-void ft_str_trim(char *str)
+void	ft_str_trim(char *str)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (str[i] == 32)
@@ -28,13 +26,13 @@ void ft_str_trim(char *str)
 	}
 }
 
-void checkSymbol(char *str, int *smb)
+void	check_symbol(char *str, int *smb)
 {
-	int is_symbol;
-	int i;
-	
+	int	is_symbol;
+	int	i;
+
 	is_symbol = 1;
-	while(is_symbol > 0)
+	while (is_symbol > 0)
 	{
 		if (str[0] == 45)
 			*smb *= -1;
@@ -71,18 +69,10 @@ void	ft_rev_char_tab(char *tab, int size)
 	}
 }
 
-int ft_atoi(char *str)
+int	filter_number(char *str, char char_list[1024])
 {
-	int		symbol;
 	int		i;
-	char	char_list[1024];
-	int 	res;
-	int 	pow;
-	int 	size;
-	
-	symbol = 1;
-	ft_str_trim(str);
-	checkSymbol(str, &symbol);
+
 	i = 0;
 	while (str[i] >= 48 && str[i] <= 57)
 	{
@@ -90,19 +80,34 @@ int ft_atoi(char *str)
 		i++;
 	}
 	char_list[i] = '\0';
-	size = i;
-	if (size > 0) {
+	return (i);
+}
+
+int	ft_atoi(char *str)
+{
+	int		symbol;
+	int		i;
+	char	char_list[1024];
+	int		res;
+	int		pow;
+
+	symbol = 1;
+	ft_str_trim(str);
+	check_symbol(str, &symbol);
+	i = filter_number(str, char_list);
+	if (i > 0)
+	{
 		ft_rev_char_tab(char_list, i);
 		i = 0;
 		res = 0;
 		pow = 1;
-		while (i < size)
+		while (char_list[i])
 		{
-				res += (char_list[i] - 48) * pow;
+			res += (char_list[i] - 48) * pow;
 			pow *= 10;
 			i++;
 		}
 		res = res * symbol;
 	}
-	return res;
+	return (res);
 }
